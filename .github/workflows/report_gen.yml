@@ -24,6 +24,8 @@ jobs:
       run: |
         git switch $REPORT_BRANCH
         mkdir -p reports
+        ls -lAh
+        pwd 
         cd ..
         git clone https://github.com/arnob-karmokar-primesilicon/github-issue-to-markdown-report
         cd github-issue-to-markdown-report
