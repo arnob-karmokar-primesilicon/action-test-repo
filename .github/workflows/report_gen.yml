@@ -1,6 +1,7 @@
 # .github/workflows/report_gen.yml
 name: Weekly Report Generator
 on:
+  push:
   schedule:
     # every day
     - cron: "0 0 * * *"
