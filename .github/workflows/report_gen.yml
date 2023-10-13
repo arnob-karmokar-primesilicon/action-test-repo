@@ -15,14 +15,15 @@ jobs:
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
     - name: Backup github issues to a markdown file.
       run: |
+        git switch weekly-report # You can change your branch name if you need
+        cd ..
         git clone https://github.com/arnob-karmokar-primesilicon/github-issue-to-markdown-report
         cd github-issue-to-markdown-report
         pip3 install --user --upgrade setuptools
         pip3 install --user -r requirements.txt
         python3 main.py primesilicon rpt_arnob-karmokar-primesilicon "Arnob Karmokar" ${{ secrets.PAT_TOKEN }} # python3 main.py <repo-owner> <repository> <Your Name> <TOKEN>
         mkdir reports
-        cp -r output/ reports/
-        git add reports/
+        cp -r output/ ../action-test-repo/reports/ # change your repo name
     - name: Commit files
       run: |
         pwd
@@ -30,7 +31,7 @@ jobs:
         cd github-issue-to-markdown-report
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Automatic report generation by GitHub Action"
+        git commit -m "Automatic report generation by GitHub Action" -a
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
