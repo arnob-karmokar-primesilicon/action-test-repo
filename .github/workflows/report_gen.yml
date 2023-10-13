@@ -41,4 +41,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.PAT_TOKEN }}
-        branch: ${{ REPORT_BRANCH }}
+        branch: ${{ env.REPORT_BRANCH }}
