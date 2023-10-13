@@ -1,4 +1,4 @@
-# .github/workflows/report_gen.yml
+# .github/workflows/report_generator.yml
 name: Weekly Report Generator
 on:
   push:
