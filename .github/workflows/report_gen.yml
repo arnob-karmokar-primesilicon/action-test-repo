@@ -3,8 +3,8 @@ name: Weekly Report Generator
 on:
   push:
   schedule:
-    # every day
-    - cron: "0 0 * * *"
+    # every monday at 3AM UTC (9AM Bangladesh Standard Time)
+    - cron: "0 3 * * MON"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add .
-        git commit -m "Automatic report generation by GitHub Action" 
+        git commit -m "Automated weekly report generation by GitHub Action" 
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
