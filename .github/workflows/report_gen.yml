@@ -23,14 +23,15 @@ jobs:
         pip3 install --user -r requirements.txt
         python3 main.py primesilicon rpt_arnob-karmokar-primesilicon "Arnob Karmokar" ${{ secrets.PAT_TOKEN }} # python3 main.py <repo-owner> <repository> <Your Name> <TOKEN>
         mkdir reports
-        cp -r output/ ../action-test-repo/reports/ # change your repo name
+        cp -r output/* ../action-test-repo/reports/ # change your repo name
     - name: Commit files
       run: |
         pwd
         ls -lAh
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "Automatic report generation by GitHub Action" -a
+        git add .
+        git commit -m "Automatic report generation by GitHub Action" 
     - name: Extract branch name
       shell: bash
       run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
