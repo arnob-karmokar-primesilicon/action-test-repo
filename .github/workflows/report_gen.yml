@@ -1,10 +1,9 @@
 # .github/workflows/report_generator.yml
 name: Weekly Report Generator
 on:
-  push:
   schedule:
     # every monday at 3AM UTC (9AM Bangladesh Standard Time)
-    - cron: "0 3 * * MON"
+    - cron: "0 11 * * FRI"
 env:
   RUN_REPOSITORY: action-test-repo
   ISSUE_REPOSITORY: rpt_arnob-karmokar-primesilicon
