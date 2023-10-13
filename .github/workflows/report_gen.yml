@@ -1,5 +1,5 @@
 # .github/workflows/report_gen.yml
-name: Issues2Markdown
+name: Weekly Report Generator
 on:
   schedule:
     # every day
