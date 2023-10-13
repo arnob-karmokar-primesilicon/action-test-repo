@@ -6,9 +6,10 @@ on:
     # every monday at 3AM UTC (9AM Bangladesh Standard Time)
     - cron: "0 3 * * MON"
 env:
-  REPOSITORY: action-rest-repo
+  RUN_REPOSITORY: action-rest-repo
+  ISSUE_REPOSITORY: rpt_arnob-karmokar-primesilicon
   REPORT_BRANCH: weekly-report
-  REPO_OWNER: primesilicon
+  ISSUE_REPO_OWNER: primesilicon
   NAME: "Arnob Karmokar"
   
 jobs:
@@ -28,9 +29,9 @@ jobs:
         cd github-issue-to-markdown-report
         pip3 install --user --upgrade setuptools
         pip3 install --user -r requirements.txt
-        python3 main.py $REPO_OWNER $REPOSITORY "$NAME" ${{ secrets.PAT_TOKEN }} # python3 main.py <repo-owner> <repository> <Your Name> <TOKEN>
+        python3 main.py $ISSUE_REPO_OWNER $ISSUE_REPOSITORY "$NAME" ${{ secrets.PAT_TOKEN }} # python3 main.py <repo-owner> <repository> <Your Name> <TOKEN>
         mkdir reports
-        cp -r output/* ../$REPOSITORY/reports/
+        cp -r output/* ../$RUN_REPOSITORY/reports/
     - name: Commit new report file
       run: |
         git config --local user.email "action@github.com"
