@@ -20,7 +20,9 @@ jobs:
         pip3 install --user --upgrade setuptools
         pip3 install --user -r requirements.txt
         python3 main.py primesilicon rpt_arnob-karmokar-primesilicon "Arnob Karmokar" ${{ secrets.PAT_TOKEN }} # python3 main.py <repo-owner> <repository> <Your Name> <TOKEN>
-        git add output/
+        mkdir reports
+        cp output/ reports/
+        git add reports/
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
