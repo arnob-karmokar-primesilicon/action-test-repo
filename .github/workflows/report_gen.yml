@@ -3,7 +3,7 @@ name: Weekly Report Generator
 on:
   schedule:
     # every monday at 3AM UTC (9AM Bangladesh Standard Time)
-    - cron: "0 11 * * FRI"
+    - cron: "10 17 * * FRI"
 env:
   RUN_REPOSITORY: action-test-repo
   ISSUE_REPOSITORY: rpt_arnob-karmokar-primesilicon
