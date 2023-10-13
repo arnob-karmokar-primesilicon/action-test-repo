@@ -28,7 +28,6 @@ jobs:
       run: |
         pwd
         ls -lAh
-        cd github-issue-to-markdown-report
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "Automatic report generation by GitHub Action" -a
