@@ -25,6 +25,7 @@ jobs:
         git add reports/
     - name: Commit files
       run: |
+        pwd
         ls -lAh
         cd github-issue-to-markdown-report
         git config --local user.email "action@github.com"
