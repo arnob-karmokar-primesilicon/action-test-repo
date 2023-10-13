@@ -25,9 +25,9 @@ jobs:
         git add reports/
     - name: Commit files
       run: |
+        cd github-issue-to-markdown-report
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        cd github-issue-to-markdown-report
         git commit -m "Automatic report generation by GitHub Action"
     - name: Extract branch name
       shell: bash
