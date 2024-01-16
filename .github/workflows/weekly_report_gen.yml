@@ -2,9 +2,9 @@
 name: Weekly Report Generator (Discussion Comment)
 on:
   push:
-  # schedule:
-  #   # every Friday at 11:15 AM UTC (5:15PM Bangladesh Standard Time)
-  #   - cron: "15 11 * * FRI"
+  schedule:
+    # every MONDAY at 3:00 AM UTC (9:00 PM Bangladesh Standard Time)
+    - cron: "0 3 * * MON"
 env:
   DISCUSSION_REPO_OWNER: arnob-karmokar-primesilicon
   DISCUSSION_REPOSITORY: action-test-repo
@@ -21,7 +21,7 @@ jobs:
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
         fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
-    - name: Generate Markdown Report from GitHub Issues
+    - name: Weekly Report Generator (Discussion Comment)
       run: |
         cd ..
         git clone https://github.com/arnob-karmokar-primesilicon/weekly-report-gen
