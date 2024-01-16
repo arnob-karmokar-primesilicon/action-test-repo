@@ -1,0 +1,31 @@
+# .github/workflows/weekly_report_gen.yml
+name: Weekly Report Generator (Discussion Comment)
+on:
+  push:
+  # schedule:
+  #   # every Friday at 11:15 AM UTC (5:15PM Bangladesh Standard Time)
+  #   - cron: "15 11 * * FRI"
+env:
+  DISCUSSION_REPO_OWNER: arnob-karmokar-primesilicon
+  DISCUSSION_REPOSITORY: action-test-repo
+  ISSUE_REPO_OWNER: primesilicon
+  ISSUE_REPOSITORY: personal.AK
+  DISCUSSION_NO: 1
+  WEEK_OFFSET: 1
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+    - name: Generate Markdown Report from GitHub Issues
+      run: |
+        cd ..
+        git clone https://github.com/arnob-karmokar-primesilicon/weekly-report-gen
+        cd weekly-report-gen
+        pip3 install --user --upgrade setuptools
+        pip3 install --user -r requirements.txt
+        python3 main.py $DISCUSSION_REPO_OWNER $DISCUSSION_REPOSITORY $ISSUE_REPO_OWNER $ISSUE_REPOSITORY $DISCUSSION_NO ${{ secrets.PAT_TOKEN }} $WEEK_OFFSET
